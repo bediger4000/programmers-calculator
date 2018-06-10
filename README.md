@@ -2,8 +2,8 @@
 
 ## BUILDING AND INSTALLATION
 
-Type `make`.  This hould build an executable file named `spine` in current
-directory.  Building (uses `yacc` and `flex`, as well as a C compiler)
+Type `make`.  This should build an executable file named `spine` in current
+directory.  Building (uses `bison` and `flex`, as well as a C compiler)
 doesn't perform anything tricky.
 
 `spine` consists of a single executable, so you can put it anywhere
@@ -35,12 +35,14 @@ A simple `yacc` grammar would have problems with one of these cases, and if you
 put in productions to do both, you'll probably introduce conflicts into some
 other part of the grammar.  For bone-headed grammars:
 
-Expressions: 12- 9; 12 - 9; both work.
-Expressions: 12-9; 12 -9; are syntax errors.
+> Expressions: `12- 9;` and `12 - 9;` both work.
+
+> Expressions: `12-9;` `12 -9;` are syntax errors.
 
 ## OPERATOR PRECEDENCE
 
 Least binding
+
 1. unary operators: -, +, ~  (unary minus, unary plus, 1's complement)
 2. multiplicative:  *, /, %  (multiply, divide, modulo)
 3. additive:        +, -
@@ -48,9 +50,10 @@ Least binding
 5. bitwise AND:     &
 6. bitwise XOR:     ^
 7. bitwise OR:      |
+
 Most binding
 
-Parentheses group factors "tighter" than operator precedence.
+Parentheses group expressions "tighter" than operator precedence.
 
 This directory has a grammar taken from the K&R 2nd ed ANSI-C grammar.
 It recognizes several unary operators, and does operator precedence
@@ -71,5 +74,5 @@ Even though `spine` accepts binary (in the "base 2" sense) input values
 (7 == 111b) it does not print out in binary - all output done with
 printf(), so `spine` has whatever limitations `printf()` has.
 
-You can type in `trace;` and `help;` during spine interaction to toggle
+You can type in `trace;` and `help;` during `spine` interaction to toggle
 evaluation tracing, and see the help-message over and over again.
